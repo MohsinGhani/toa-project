@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './mat.module'
 import {InputStringDialogComponent} from './input-string-dialog/input-string-dialog.component'
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 
@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   entryComponents:[
     InputStringDialogComponent

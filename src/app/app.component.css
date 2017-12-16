@@ -1,5 +1,44 @@
+.header{
+    box-shadow: 5px 0px 5px #000;
+}
+
 .top-right{
     float: right !important;
     background: #000;
     min-width: 50px;
+}
+
+.container{
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.heading1{
+    color: #000099	;
+    margin-top: -10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.ques{
+    font-size: 20px;
+    margin-left: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #35a4ee;
+}
+
+.input-btn{
+    width: 100%;
+}
+
+.result-card{
+    margin-top: 8px;
+}
+
+.delete{
+    cursor: pointer;
+}
+
+.row{
+    text-align: center
 }

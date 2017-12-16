@@ -1,28 +1,75 @@
-<mat-toolbar color="primary">
-
+<mat-toolbar color="primary" class="header">
   <mat-toolbar-row>
     <span>Theory of Automata</span>
-    <!-- <div class="top-right">
-      <span class="example-spacer"></span>
-      <mat-icon>verified_user</mat-icon>
-    </div> -->
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PERSONAL DATA
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-sm-5">
+        <strong>Submit By</strong>
+      </div>
+      <div class="col-sm-5">Mohsin Ghani</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <strong>Submit To</strong>
+      </div>
+      <div class="col-sm-5">Sir Osama Ahmed Khan</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <strong>DATE</strong>
+      </div>
+      <div class="col-sm-5">Dec 20th, 2017</div>
+    </div>
+    <div class="row">
+    <div class="col-sm-5">
+      <strong>ID</strong>
+    </div>
+    <div class="col-sm-5">SP16-BS-0065</div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="container">
+  <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>
-        <h2>Finite Automata</h2>
+        <h1 class="heading1">Deterministic Finite Automata (DFA)</h1>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <button mat-raised-button (click)="openDialog()">Input</button>
-      <hr>
-      <strong>Result: {{dialogResult}}</strong>
+      <p class="ques">Write a program to construct a Deterministic Finite Automata (DFA) for the Language of
+        <strong>all Strings of even length</strong>, over Binary Alphabet. Even numbers start with 2.</p>
+      <button class="input-btn" mat-raised-button color="primary" (click)="openDialog()">Click to Proccess Your String</button>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
   </mat-card>
+
+  <mat-card *ngFor="let result of automata;let i = index" class="result-card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-sm-1">
+          <mat-icon *ngIf="result.result == 'Rejected'">close</mat-icon>
+          <mat-icon *ngIf="result.result == 'Accepted'">spellcheck</mat-icon>
+          <mat-icon *ngIf="result.result == 'Stopped Working'">error</mat-icon>
+        </div>
+        <div class="col-sm-2">{{result.input}}</div>
+        <div class="col-sm-2">{{result.result}}</div>
+        <div class="col-sm-6">{{result.reason}}</div>
+        <div class="col-sm-1 delete">
+          <div (click)="deleteAutomata(i)">
+            <mat-icon>delete_forever</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

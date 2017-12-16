@@ -1,14 +1,20 @@
 <div>
-  <h2 mat-dialog-title>MY DIALOG</h2>
+  <h2 mat-dialog-title>Deterministic Finite Automata</h2>
   <hr>
   <mat-dialog-content>
-    Input the String for process Finite Automata
-    <br><br>
-    <strong>{{data}}</strong>
+    Write the string for processing by this DFA
+    <br>
+    <br>
+    <mat-form-field id="input">
+      <input matInput type="text" placeholder="{{data}}" [(ngModel)]="inputString" name="inputString"/>
+      <button mat-button *ngIf="inputString" matSuffix mat-icon-button aria-label="Clear" (click)="inputString=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
   </mat-dialog-content>
-  <hr>
+  
   <mat-dialog-actions>
-      <button mat-raised-button (click)="onCloseConfirm()">Process</button>
-      <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
+    <button mat-raised-button (click)="onCloseConfirm()">Process</button>
+    <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
   </mat-dialog-actions>
 </div>
