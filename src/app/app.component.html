@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+
+  <mat-toolbar-row>
+    <span>Theory of Automata</span>
+    <!-- <div class="top-right">
+      <span class="example-spacer"></span>
+      <mat-icon>verified_user</mat-icon>
+    </div> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <h2>Finite Automata</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <button mat-raised-button (click)="openDialog()">Input</button>
+      <hr>
+      <strong>Result: {{dialogResult}}</strong>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>

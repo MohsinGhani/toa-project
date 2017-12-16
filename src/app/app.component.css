@@ -1,0 +1,5 @@
+.top-right{
+    float: right !important;
+    background: #000;
+    min-width: 50px;
+}
