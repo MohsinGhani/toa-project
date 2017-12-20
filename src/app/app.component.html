@@ -57,7 +57,7 @@
       <div class="row">
         <div class="col-sm-1">
           <mat-icon *ngIf="result.result == 'Rejected'">close</mat-icon>
-          <mat-icon *ngIf="result.result == 'Accepted'">spellcheck</mat-icon>
+          <a (click)="getPath(i)" style="cursor:pointer"> <mat-icon *ngIf="result.result == 'Accepted'">spellcheck</mat-icon></a>
           <mat-icon *ngIf="result.result == 'Stopped Working'">error</mat-icon>
         </div>
         <div class="col-sm-2">{{result.input}}</div>

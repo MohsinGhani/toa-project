@@ -5,7 +5,8 @@ import { InputStringDialogComponent } from './input-string-dialog/input-string-d
 interface Properties {
   input: any,
   result: String,
-  reason: String
+  reason: String,
+  path?:String
 }
 
 @Component({
@@ -17,14 +18,30 @@ interface Properties {
 export class AppComponent {
   object: Properties;
   automata = [];
+  
+  initialState = 'q0'
+  midState = 'q1'
+  finalState = 'q2'
+
+  stack = [];
 
   constructor(public dialog: MatDialog) {
-    this.object = { input: '1111', result: 'Rejected', reason: 'This is Even Length String and Having Binary Language' }    // 
-    // this.automata.push(this.object)
-    // console.log(this.automata)
+    this.object = { input: '1111', result: 'Rejected', reason: 'This is Even Length String and Having Binary Language'}    // 
+    let input = '1100'
+  }
+
+  transitionFunction(state,input){
+    if(state == 'q0'){
+      return this.midState
+    } else if(state == 'q1'){
+      return this.finalState
+    } else if(state == 'q2'){
+      return this.midState
+    }
   }
 
   openDialog(): void {
+    this.stack = [this.initialState]
     let dialogRef = this.dialog.open(InputStringDialogComponent, {
       width: '500px',
       data: 'Write String'
@@ -49,13 +66,15 @@ export class AppComponent {
           this.object.result = 'Stopped Working';
           this.object.reason = 'This String have non-recongnized input є'
         }
-        else if(this.isLengthEven(result)){
+        else if(this.getLastState(result) != 'q2'){
           this.object.result = 'Rejected';
           this.object.reason = 'This String does not have Even Length'
         }
         else{
           this.object.result = 'Accepted';
           this.object.reason = 'This String is Accepted'
+          this.object.path = this.stack.join('')
+          this.stack = [this.initialState]
         }
         this.automata.push(this.object)
       }
@@ -114,13 +133,17 @@ export class AppComponent {
     return flage
   }
 
-  isLengthEven(input){
-    let flage = false;
-    let value = Array.from(input).length
-    if(value % 2 !== 0){
-      flage = true;
-    }
-    return flage
+  getLastState(input){
+    let currentState = this.initialState
+    Array.from(input).forEach((input)=>{
+      currentState = this.transitionFunction(currentState,input)
+      this.stack.push(`-${input}-> ${currentState}`)
+    })
+    return currentState
+  }
+
+  getPath(i){
+    alert(this.automata[i].path)
   }
 
   deleteAutomata(i){
